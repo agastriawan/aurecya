@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artikel – NPURE Skin Journal</title>
+<meta name="description" content="Tips perawatan kulit, edukasi bahan aktif, dan panduan rutinitas skincare dari NPURE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1B4332;
+  --mint:#95D5B2;
+  --sage:#52B788;
+  --cream:#F8F5F0;
+  --white:#FFFFFF;
+  --dark:#0D1F16;
+  --text:#2D3A32;
+  --muted:#6B7B72;
+  --display:'Cormorant Garamond',serif;
+  --body:'DM Sans',sans-serif;
+  --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--cream);overflow-x:hidden;line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s var(--ease),backdrop-filter 0.4s}
+nav.scrolled{background:rgba(27,67,50,0.94);backdrop-filter:blur(20px)}
+.nav-logo{font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--white);letter-spacing:0.05em;text-decoration:none}
+.nav-logo span{color:var(--mint)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--mint)}
+.nav-cta{background:var(--mint);color:var(--forest);padding:0.6rem 1.5rem;border-radius:2rem;font-size:0.82rem;font-weight:500;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.3s}
+.nav-cta:hover{background:var(--white);transform:translateY(-1px)}
+.nav-mobile-menu{display:none;background:none;border:none;cursor:pointer;color:white;font-size:1.5rem}
+
+/* HERO ARTICLE */
+.article-hero{margin-top:0;position:relative;width:100%;min-height:480px;display:flex;align-items:flex-end;overflow:hidden}
+.article-hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#2D6A4F,#1B4332);display:flex;align-items:center;justify-content:center}
+.article-hero-bg p{color:rgba(255,255,255,0.25);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center}
+.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,22,0.85) 0%,rgba(13,31,22,0.2) 60%,transparent 100%)}
+.article-hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:0 2.5rem 3.5rem;width:100%}
+.article-cat-badge{display:inline-block;background:var(--mint);color:var(--forest);padding:0.3rem 1rem;border-radius:2rem;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem}
+.article-hero-title{font-family:var(--display);font-size:clamp(2rem,5vw,3.8rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1rem;max-width:720px}
+.article-hero-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.article-hero-meta span{font-size:0.82rem;color:rgba(255,255,255,0.6)}
+.article-hero-meta strong{color:rgba(255,255,255,0.9);font-weight:500}
+
+/* LAYOUT */
+.article-page-layout{max-width:1200px;margin:0 auto;padding:4rem 2.5rem;display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:start}
+
+/* ARTICLE BODY */
+.article-main{}
+.article-body-content h2{font-family:var(--display);font-size:1.8rem;font-weight:400;color:var(--forest);margin:2.5rem 0 0.75rem;line-height:1.2}
+.article-body-content h3{font-family:var(--display);font-size:1.3rem;font-weight:400;color:var(--forest);margin:2rem 0 0.5rem}
+.article-body-content p{color:var(--muted);font-size:1rem;line-height:1.9;margin-bottom:1.4rem;font-weight:300}
+.article-body-content strong{color:var(--text);font-weight:500}
+.article-body-content em{font-style:italic}
+.article-body-content ul{list-style:none;margin:1rem 0 1.75rem;padding:0}
+.article-body-content ul li{color:var(--muted);font-size:0.97rem;line-height:1.75;padding:0.45rem 0 0.45rem 1.75rem;position:relative;font-weight:300}
+.article-body-content ul li::before{content:'';position:absolute;left:0;top:0.9rem;width:7px;height:7px;background:var(--sage);border-radius:50%}
+.article-body-content blockquote{border-left:3px solid var(--mint);padding:1.25rem 1.75rem;margin:2rem 0;background:rgba(149,213,178,0.07);border-radius:0 1rem 1rem 0}
+.article-body-content blockquote p{color:var(--forest);font-style:italic;font-family:var(--display);font-size:1.2rem;margin:0;line-height:1.6}
+
+/* INLINE PRODUCT CTA */
+.inline-product-cta{background:var(--white);border-radius:1.25rem;padding:1.75rem 2rem;margin:2.5rem 0;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;border:1px solid rgba(27,67,50,0.1);box-shadow:0 4px 20px rgba(27,67,50,0.06)}
+.inline-product-cta .cta-text p{font-size:0.97rem;color:var(--text);font-weight:500;margin:0 0 0.25rem}
+.inline-product-cta .cta-text span{font-size:0.83rem;color:var(--muted)}
+.btn-forest{background:var(--forest);color:var(--white);padding:0.85rem 2rem;border-radius:3rem;font-size:0.85rem;font-weight:400;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:all 0.3s;display:inline-block;white-space:nowrap}
+.btn-forest:hover{background:var(--dark);transform:translateY(-2px)}
+
+/* TAGS */
+.article-tags-footer{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2.5rem 0 0;padding-top:2rem;border-top:1px solid rgba(27,67,50,0.1)}
+.article-tag{background:rgba(27,67,50,0.05);color:var(--forest);padding:0.35rem 0.9rem;border-radius:2rem;font-size:0.75rem;border:1px solid rgba(27,67,50,0.12);letter-spacing:0.03em}
+
+/* SIDEBAR */
+.article-sidebar{position:sticky;top:100px}
+.sidebar-card{background:var(--white);border-radius:1.5rem;padding:1.75rem;border:1px solid rgba(27,67,50,0.08);margin-bottom:1.5rem}
+.sidebar-card h4{font-family:var(--display);font-size:1.15rem;font-weight:400;color:var(--forest);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(27,67,50,0.08)}
+.sidebar-product{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(27,67,50,0.06)}
+.sidebar-product:last-of-type{margin-bottom:1.25rem;padding-bottom:0;border-bottom:none}
+.sidebar-product-img{width:56px;height:80px;background:linear-gradient(135deg,#E8F5EE,#95D5B2);border-radius:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem}
+.sidebar-product-info .name{font-size:0.85rem;font-weight:500;color:var(--forest);line-height:1.35;margin-bottom:0.2rem}
+.sidebar-product-info .price{font-size:0.8rem;color:var(--sage);font-weight:500}
+.sidebar-buy-btn{display:block;text-align:center;background:var(--forest);color:var(--white);padding:0.7rem 1rem;border-radius:2rem;font-size:0.8rem;text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;transition:all 0.3s;margin-top:0.25rem}
+.sidebar-buy-btn:hover{background:var(--sage)}
+
+/* Related articles */
+.related-article{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(27,67,50,0.06);cursor:pointer;text-decoration:none;color:inherit;transition:opacity 0.3s}
+.related-article:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.related-article:hover{opacity:0.75}
+.related-thumb{width:64px;height:48px;border-radius:0.6rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.related-article-title{font-size:0.82rem;font-weight:400;color:var(--forest);line-height:1.35;margin-bottom:0.2rem}
+.related-article-date{font-size:0.72rem;color:var(--muted)}
+
+/* PROGRESS BAR */
+.reading-progress{position:fixed;top:0;left:0;height:3px;background:var(--mint);z-index:200;transition:width 0.1s linear;width:0%}
+
+/* BACK BUTTON */
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;color:var(--sage);font-size:0.82rem;font-weight:500;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.3s;margin-bottom:2rem}
+.back-btn:hover{color:var(--forest)}
+.back-btn::before{content:'←';font-style:normal}
+
+/* SHARE */
+.share-row{display:flex;align-items:center;gap:0.75rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(27,67,50,0.08)}
+.share-label{font-size:0.78rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;font-weight:500}
+.share-btn{width:36px;height:36px;border-radius:50%;background:rgba(27,67,50,0.07);display:flex;align-items:center;justify-content:center;border:1px solid rgba(27,67,50,0.1);cursor:pointer;font-size:0.8rem;transition:all 0.3s;text-decoration:none;color:var(--forest)}
+.share-btn:hover{background:var(--forest);color:var(--white);border-color:var(--forest)}
+
+/* FOOTER mini */
+.article-footer{background:var(--dark);padding:2.5rem;text-align:center}
+.article-footer p{color:rgba(255,255,255,0.4);font-size:0.82rem}
+.article-footer a{color:var(--mint);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .article-page-layout{grid-template-columns:1fr 280px;gap:2.5rem}
+}
+@media(max-width:900px){
+  nav{padding:1rem 1.25rem}
+  .nav-links{display:none}
+  .nav-mobile-menu{display:block}
+  .article-hero{min-height:320px}
+  .article-hero-content{padding:0 1.5rem 2.5rem}
+  .article-page-layout{grid-template-columns:1fr;padding:3rem 1.5rem}
+  .article-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+  .article-nav{padding:0 1.5rem 4rem;grid-template-columns:1fr 1fr;gap:1rem}
+}
+@media(max-width:600px){
+  .article-hero-title{font-size:1.85rem}
+  .article-page-layout{padding:2.5rem 1.25rem}
+  .article-body-content h2{font-size:1.5rem}
+  .article-sidebar{grid-template-columns:1fr}
+  .article-nav{grid-template-columns:1fr;padding:0 1.25rem 3rem}
+  .article-hero-meta{gap:0.75rem}
+  .inline-product-cta{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- NAV -->
+<nav id="mainNav" role="navigation" aria-label="Navigasi Utama">
+  <a href="index.html" class="nav-logo">N<span>PURE</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#story">Cerita</a></li>
+    <li><a href="index.html#science">Sains</a></li>
+    <li><a href="index.html#products">Produk</a></li>
+    <li><a href="index.html#compare">Bandingkan</a></li>
+    <li><a href="index.html#artikel">Artikel</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html#shop" class="nav-cta">Beli Sekarang</a>
+  <button class="nav-mobile-menu" aria-label="Menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero" id="articleHero">
+  <div class="article-hero-bg" id="heroBg">
+    <p>📸 Hero Image Artikel<br>Ganti dengan foto produk / bahan aktif<br>Rekomendasi: 1440×580px</p>
+  </div>
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <span class="article-cat-badge" id="heroCat">Edukasi Bahan</span>
+    <h1 class="article-hero-title" id="heroTitle">Memuat artikel...</h1>
+    <div class="article-hero-meta">
+      <span><strong id="heroAuthor">Tim NPURE</strong></span>
+      <span id="heroDate">—</span>
+      <span id="heroRead">— menit baca</span>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="article-page-layout">
+
+  <!-- ARTICLE MAIN -->
+  <main class="article-main">
+    <a href="index.html#artikel" class="back-btn">Kembali ke semua artikel</a>
+
+    <article class="article-body-content" id="articleContent">
+      <!-- Diisi oleh JS -->
+      <p style="color:var(--muted)">Memuat konten artikel...</p>
+    </article>
+
+    <div class="share-row">
+      <span class="share-label">Bagikan</span>
+      <a class="share-btn" id="shareWA" href="#" title="WhatsApp" target="_blank" rel="noopener">💬</a>
+      <a class="share-btn" id="shareIG" href="https://www.instagram.com/npure.id" title="Instagram" target="_blank" rel="noopener">📷</a>
+      <button class="share-btn" id="copyLink" title="Salin tautan" onclick="copyLink()">🔗</button>
+    </div>
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="article-sidebar">
+    <!-- Produk NPURE -->
+    <div class="sidebar-card">
+      <h4>Produk NPURE</h4>
+      <div class="sidebar-product">
+        <div class="sidebar-product-img">🌿</div>
+        <div class="sidebar-product-info">
+          <div class="name">Cica Beat The Sun GLOW Sunscreen SPF 50+</div>
+          <div class="price">Rp 89.000 · 35ml</div>
+        </div>
+      </div>
+      <div class="sidebar-product">
+        <div class="sidebar-product-img">🌱</div>
+        <div class="sidebar-product-info">
+          <div class="name">Centella Asiatica Cica Hydrating &amp; Calming Toner</div>
+          <div class="price">Rp 79.000 · 150ml</div>
+        </div>
+      </div>
+      <a href="index.html#shop" class="sidebar-buy-btn">Beli Sekarang</a>
+    </div>
+
+    <!-- Artikel Lainnya -->
+    <div class="sidebar-card">
+      <h4>Artikel Lainnya</h4>
+      <div id="relatedArticles">
+        <!-- Diisi oleh JS -->
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <p>© 2024 NPURE. All rights reserved. — <a href="index.html">Kembali ke Beranda</a></p>
+</footer>
+
+<script>
+// ─── Article Data ───────────────────────────────────────────
+const articles = {
+  '1': {
+    id: '1',
+    cat: 'Edukasi Bahan',
+    catColor: '',
+    title: 'Mengenal Centella Asiatica: Rahasia Kulit Sehat dari Pegagan',
+    date: '15 November 2024',
+    datetime: '2024-11-15',
+    readTime: '5 menit baca',
+    heroBg: 'linear-gradient(135deg,#2D6A4F,#1B4332)',
+    tags: ['Centella Asiatica','Skincare Alami','Kulit Berjerawat','Skin Barrier','Bahan Aktif'],
+    ctaTitle: 'Rasakan manfaat Centella Asiatica dalam produk NPURE',
+    ctaDesc: 'Teruji dermatologi · Halal · Aman bumil & busui',
+    ctaBtn: 'Lihat Produk',
+    content: `
+      <p>Centella Asiatica, atau yang lebih dikenal di Indonesia sebagai <strong>pegagan</strong>, adalah tanaman herbal yang tumbuh subur di kawasan tropis Asia Tenggara. Selama lebih dari 3.000 tahun, tanaman ini telah digunakan dalam pengobatan tradisional Ayurveda dan pengobatan tradisional Tiongkok untuk menyembuhkan luka, mengatasi peradangan, dan memperbaiki kesehatan kulit.</p>
+      <blockquote><p>"Centella Asiatica adalah salah satu bahan botanikal paling komprehensif yang pernah dipelajari untuk kesehatan kulit — satu bahan, banyak manfaat."</p></blockquote>
+      <h2>Apa yang Membuat Centella Asiatica Istimewa?</h2>
+      <p>Keunikan Centella terletak pada kandungan senyawa bioaktifnya yang bekerja secara sinergis:</p>
+      <ul>
+        <li><strong>Asiaticoside</strong> — merangsang produksi kolagen dan mempercepat regenerasi sel kulit</li>
+        <li><strong>Madecassoside</strong> — antiinflamasi kuat yang menenangkan kulit kemerahan dan iritasi</li>
+        <li><strong>Asam Asiatik</strong> — meningkatkan produksi hyaluronic acid alami untuk hidrasi mendalam</li>
+        <li><strong>Asam Madekasik</strong> — memperkuat skin barrier dan melindungi dari kerusakan lingkungan</li>
+      </ul>
+      <h2>Manfaat Centella Asiatica untuk Kulit</h2>
+      <h3>1. Menenangkan Kulit Kemerahan & Iritasi</h3>
+      <p>Madecassoside dalam Centella terbukti secara klinis mampu menghambat pelepasan sitokin inflamasi — senyawa yang menyebabkan kemerahan dan iritasi. Hasilnya, kulit terasa lebih tenang dalam waktu singkat setelah pemakaian.</p>
+      <h3>2. Melawan Jerawat secara Alami</h3>
+      <p>Centella memiliki sifat antimikroba alami yang efektif melawan bakteri <em>Cutibacterium acnes</em>, penyebab utama jerawat. Berbeda dengan bahan anti-jerawat keras seperti benzoyl peroxide, Centella tidak membuat kulit kering atau perih.</p>
+      <h3>3. Menghidrasi Kulit dari Dalam</h3>
+      <p>Asam asiatik dalam Centella meningkatkan kemampuan kulit menghasilkan hyaluronic acid secara endogen. Ini berarti kulitmu bukan hanya mendapat hidrasi dari luar, tapi juga dilatih untuk mempertahankan kelembapannya sendiri.</p>
+      <h3>4. Memperkuat Skin Barrier</h3>
+      <p>Skin barrier yang rusak adalah akar dari banyak masalah kulit: kulit kering, sensitif, mudah merah, dan rentan jerawat. Centella secara aktif menstimulasi sintesis ceramide — komponen utama skin barrier — sehingga lapisan pelindung kulit semakin kuat setiap harinya.</p>
+      <h2>Siapa yang Cocok Menggunakan Centella Asiatica?</h2>
+      <p>Centella Asiatica cocok untuk <strong>semua jenis kulit</strong> — dari kulit kering, berminyak, kombinasi, hingga kulit sensitif dan berjerawat. Sifatnya yang lembut dan non-iritan menjadikannya pilihan aman bahkan untuk kulit yang paling reaktif sekalipun, termasuk kulit ibu hamil dan menyusui.</p>
+    `
+  },
+  '2': {
+    id: '2',
+    cat: 'Tips Perawatan',
+    catColor: 'background:linear-gradient(135deg,#40916C,#2D6A4F)',
+    title: 'Cara Pakai Sunscreen yang Benar Supaya Perlindungan Maksimal',
+    date: '8 November 2024',
+    datetime: '2024-11-08',
+    readTime: '4 menit baca',
+    heroBg: 'linear-gradient(135deg,#40916C,#2D6A4F)',
+    tags: ['Sunscreen','SPF 50+','Tips Skincare','Perlindungan UV','Anti Penuaan'],
+    ctaTitle: 'NPURE Cica Beat The Sun GLOW – SPF 50+ PA++++',
+    ctaDesc: 'Tanpa white cast · Glow finish · Ringan di kulit',
+    ctaBtn: 'Beli Sekarang',
+    content: `
+      <p>Sunscreen adalah produk wajib dalam rutinitas skincare harian — bahkan di hari mendung sekalipun. Namun, banyak orang yang sudah rutin memakai sunscreen tapi tidak merasakan manfaat optimalnya. Penyebabnya? <strong>Cara dan jumlah pemakaian yang kurang tepat.</strong></p>
+      <h2>Berapa Banyak Sunscreen yang Harus Dipakai?</h2>
+      <p>Panduan umum dermatologi adalah <strong>aturan 2 jari</strong>: tekan sunscreen sepanjang 2 jari (jari telunjuk dan jari tengah) sebelum diaplikasikan ke wajah dan leher. Jumlah ini setara dengan sekitar ¼ sendok teh atau 1/4 ml — cukup untuk memberikan perlindungan SPF sesuai label produk.</p>
+      <blockquote><p>"Memakai sunscreen setengah-setengah sama saja dengan mendapat setengah perlindungan. SPF bekerja berdasarkan jumlah yang tepat."</p></blockquote>
+      <h2>Urutan Pemakaian Sunscreen yang Benar</h2>
+      <ul>
+        <li>Cuci muka dengan sabun wajah lembut</li>
+        <li>Aplikasikan toner (seperti NPURE Cica Toner)</li>
+        <li>Serum dan pelembap (jika digunakan)</li>
+        <li><strong>Sunscreen sebagai langkah terakhir skincare</strong>, sebelum makeup</li>
+      </ul>
+      <h2>Kapan Harus Reapply Sunscreen?</h2>
+      <p>Ini adalah pertanyaan yang paling sering ditanyakan. Jawabannya: <strong>setiap 2 jam sekali</strong> saat beraktivitas di luar ruangan, terutama saat cuaca terik, atau setelah berkeringat dan berenang.</p>
+      <p>Untuk aktivitas dalam ruangan dengan paparan sinar matahari minimal (misalnya kerja di kantor), satu kali aplikasi di pagi hari biasanya sudah cukup. Namun jika kamu sering duduk dekat jendela, reapply setelah makan siang tetap dianjurkan.</p>
+      <h2>Mengapa NPURE Cica Sunscreen Mudah Diaplikasikan Ulang?</h2>
+      <p>Salah satu alasan banyak orang malas reapply sunscreen adalah teksturnya yang berat dan meninggalkan white cast. NPURE Cica Beat The Sun GLOW dirancang khusus dengan formula ringan dan <strong>tanpa white cast</strong> sehingga bisa diaplikasikan ulang di atas makeup sekalipun tanpa merusak tampilan.</p>
+      <h2>Tips Tambahan Pemakaian Sunscreen</h2>
+      <ul>
+        <li>Aplikasikan sunscreen 15–20 menit sebelum keluar ruangan agar sempat diserap kulit</li>
+        <li>Jangan lupa area yang sering terlewat: telinga, leher, dan punggung tangan</li>
+        <li>Bahkan di dalam ruangan, paparan sinar UVA dari jendela tetap ada — sunscreen tetap perlu dipakai</li>
+        <li>Simpan sunscreen di tempat sejuk, jauh dari paparan sinar matahari langsung agar formulanya stabil</li>
+      </ul>
+    `
+  },
+  '3': {
+    id: '3',
+    cat: 'Rutinitas Kulit',
+    catColor: 'background:linear-gradient(135deg,#C7E9D8,#95D5B2)',
+    title: 'Rutinitas Skincare Pagi & Malam untuk Kulit Berjerawat yang Tepat',
+    date: '28 Oktober 2024',
+    datetime: '2024-10-28',
+    readTime: '6 menit baca',
+    heroBg: 'linear-gradient(135deg,#C7E9D8,#95D5B2)',
+    tags: ['Kulit Berjerawat','Rutinitas Skincare','Skincare Pagi','Skincare Malam','Anti Jerawat'],
+    ctaTitle: 'Mulai rutinitas kulit berjerawatmu dengan NPURE Cica Duo',
+    ctaDesc: 'Toner + Sunscreen · Paket Starter tersedia',
+    ctaBtn: 'Lihat Bundle',
+    content: `
+      <p>Kulit berjerawat adalah salah satu kondisi kulit yang paling umum dan paling membuat frustrasi. Sering kali, masalahnya bukan pada produk yang digunakan, tapi pada <strong>urutan pemakaian dan ketepatan pemilihan bahan aktif</strong> yang tidak sesuai kebutuhan kulit.</p>
+      <h2>Prinsip Dasar Skincare untuk Kulit Berjerawat</h2>
+      <p>Sebelum membahas rutinitas, ada 3 prinsip yang harus dipegang teguh:</p>
+      <ul>
+        <li><strong>Kurangi peradangan</strong> — jerawat pada dasarnya adalah proses inflamasi. Pilih bahan yang menenangkan, bukan mengiritasi</li>
+        <li><strong>Jaga kelembapan</strong> — kulit berjerawat tetap butuh hidrasi. Kulit yang kering justru memproduksi sebum lebih banyak</li>
+        <li><strong>Lindungi skin barrier</strong> — skin barrier yang rusak membuat kulit lebih rentan infeksi bakteri penyebab jerawat</li>
+      </ul>
+      <h2>Rutinitas Pagi: Langkah demi Langkah</h2>
+      <h3>Langkah 1: Cuci Muka dengan Sabun Lembut</h3>
+      <p>Gunakan sabun pembersih dengan pH 4.5–5.5 yang mendekati pH alami kulit. Hindari sabun berbusa lebat yang cenderung terlalu membersihkan dan merusak skin barrier.</p>
+      <h3>Langkah 2: Toner Centella — Kunci Rutinitas Berjerawat</h3>
+      <p>Setelah kulit bersih, segera aplikasikan <strong>NPURE Cica Hydrating &amp; Calming Toner</strong>. Centella Asiatica di dalamnya langsung bekerja menenangkan kulit yang baru dibersihkan, sekaligus menyiapkan kulit untuk menyerap produk berikutnya secara optimal.</p>
+      <h3>Langkah 3: Serum (Opsional)</h3>
+      <p>Jika menggunakan serum niacinamide atau BHA, aplikasikan setelah toner. Biarkan menyerap 2–3 menit sebelum lanjut ke langkah berikutnya.</p>
+      <h3>Langkah 4: Pelembap Ringan</h3>
+      <p>Pilih pelembap bertekstur gel atau lotion ringan yang non-komedogenik. Kulit berjerawat butuh pelembap — jangan dilewatkan.</p>
+      <h3>Langkah 5: Sunscreen — Wajib, Tanpa Terkecuali</h3>
+      <p>Tutup rutinitas pagi dengan sunscreen. Untuk kulit berjerawat, <strong>NPURE Cica Beat The Sun GLOW</strong> adalah pilihan ideal karena formulanya non-acnegenik, ringan, dan tidak menyumbat pori.</p>
+      <h2>Rutinitas Malam: Fokus Pemulihan</h2>
+      <p>Malam adalah waktu kulit beregenerasi. Rutinitas malammu harus mendukung proses ini:</p>
+      <ul>
+        <li>Double cleansing (micellar water + sabun wajah) untuk membersihkan sunscreen dan polutan</li>
+        <li>NPURE Cica Toner — biarkan bekerja semalaman menenangkan jerawat aktif</li>
+        <li>Treatment spot (jika ada jerawat aktif)</li>
+        <li>Pelembap malam yang lebih rich (opsional)</li>
+      </ul>
+      <blockquote><p>"Konsistensi adalah kunci. Tidak ada produk ajaib — yang ada adalah rutinitas yang tepat dan dilakukan secara konsisten."</p></blockquote>
+    `
+  },
+  '4': {
+    id: '4',
+    cat: 'Edukasi SPF',
+    catColor: 'background:linear-gradient(135deg,#52B788,#1B4332)',
+    title: 'SPF vs PA: Apa Bedanya dan Mengapa Keduanya Penting?',
+    date: '15 Oktober 2024',
+    datetime: '2024-10-15',
+    readTime: '5 menit baca',
+    heroBg: 'linear-gradient(135deg,#52B788,#1B4332)',
+    tags: ['SPF','PA++++','UVA UVB','Sunscreen','Anti Penuaan'],
+    ctaTitle: 'NPURE Cica Beat The Sun GLOW — SPF 50+ PA++++',
+    ctaDesc: 'Perlindungan ganda UVA & UVB · Ringan · Tanpa white cast',
+    ctaBtn: 'Beli Sekarang',
+    content: `
+      <p>Saat membeli sunscreen, kamu pasti melihat dua angka/tanda yang berbeda: <strong>SPF 50+</strong> dan <strong>PA++++</strong>. Banyak orang hanya memperhatikan angka SPF dan mengabaikan PA — padahal keduanya sama-sama krusial untuk perlindungan kulit yang menyeluruh.</p>
+      <blockquote><p>"Sunscreen tanpa PA ibarat payung yang hanya melindungi dari hujan, tapi tidak dari angin. Kulitmu tetap terpapar separuh bahaya."</p></blockquote>
+      <h2>Apa Itu SPF?</h2>
+      <p><strong>SPF (Sun Protection Factor)</strong> mengukur seberapa efektif produk melindungi kulitmu dari <strong>sinar UVB</strong> — jenis radiasi UV yang menyebabkan kulit terbakar (sunburn) dan meningkatkan risiko kanker kulit. Angka SPF menunjukkan seberapa lama kulitmu bisa terlindungi dibandingkan tanpa perlindungan sama sekali.</p>
+      <ul>
+        <li><strong>SPF 30</strong> — memblokir sekitar 97% sinar UVB</li>
+        <li><strong>SPF 50</strong> — memblokir sekitar 98% sinar UVB</li>
+        <li><strong>SPF 50+</strong> — perlindungan tertinggi yang tersedia secara komersial</li>
+      </ul>
+      <h2>Apa Itu PA?</h2>
+      <p><strong>PA (Protection Grade of UVA)</strong> adalah sistem penilaian yang mengukur perlindungan terhadap <strong>sinar UVA</strong>. Berbeda dengan UVB, sinar UVA lebih dalam menembus lapisan dermis kulit dan menjadi penyebab utama:</p>
+      <ul>
+        <li>Penuaan dini: kerutan, garis halus, kulit kendur</li>
+        <li>Hiperpigmentasi dan flek hitam membandel</li>
+        <li>Kerusakan kolagen jangka panjang yang tidak terasa langsung</li>
+      </ul>
+      <p>Tanda <strong>+</strong> pada PA menunjukkan tingkat perlindungan UVA. <strong>PA++++</strong> adalah perlindungan UVA tertinggi yang tersedia di pasaran saat ini.</p>
+      <h2>Kenapa Harus Ada Keduanya?</h2>
+      <p>Sinar matahari memancarkan dua jenis UV berbahaya sekaligus: UVB <em>dan</em> UVA. Sunscreen yang hanya memiliki SPF tinggi tapi PA rendah hanya melindungi setengah dari ancaman. Sebaliknya, PA tanpa SPF tidak melindungi dari sunburn. Untuk perlindungan benar-benar komprehensif, kamu membutuhkan keduanya.</p>
+      <h2>Cara Membaca Label Sunscreen</h2>
+      <p>Saat memilih sunscreen, perhatikan dua hal ini sekaligus:</p>
+      <ul>
+        <li>SPF minimal 30 untuk aktivitas harian, SPF 50+ untuk aktivitas outdoor intensif</li>
+        <li>PA minimal ++ untuk harian, PA++++ untuk perlindungan optimal terhadap penuaan</li>
+        <li>Cari label "broad-spectrum" yang berarti melindungi dari UVA dan UVB sekaligus</li>
+      </ul>
+      <p>NPURE Cica Beat The Sun GLOW hadir dengan formulasi <strong>SPF 50+ PA++++</strong> — memenuhi standar tertinggi perlindungan UVA dan UVB, sekaligus tetap ringan di kulit dan bebas white cast untuk pemakaian sehari-hari.</p>
+    `
+  }
+};
+
+const relatedData = [
+  { id:'1', title:'Mengenal Centella Asiatica: Rahasia Kulit Sehat dari Pegagan', date:'15 Nov 2024', bg:'linear-gradient(135deg,#2D6A4F,#1B4332)', emoji:'🌿' },
+  { id:'2', title:'Cara Pakai Sunscreen yang Benar Supaya Perlindungan Maksimal', date:'8 Nov 2024', bg:'linear-gradient(135deg,#40916C,#2D6A4F)', emoji:'☀️' },
+  { id:'3', title:'Rutinitas Skincare Pagi & Malam untuk Kulit Berjerawat', date:'28 Okt 2024', bg:'linear-gradient(135deg,#C7E9D8,#95D5B2)', emoji:'🌸' },
+  { id:'4', title:'SPF vs PA: Apa Bedanya dan Mengapa Keduanya Penting?', date:'15 Okt 2024', bg:'linear-gradient(135deg,#52B788,#1B4332)', emoji:'🔆' }
+];
+
+// ─── Load article ──────────────────────────────────────────
+function getArticleId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id') || '1';
+}
+
+function loadArticle(id) {
+  const a = articles[id];
+  if (!a) { loadArticle('1'); return; }
+
+  // Update meta
+  document.title = a.title + ' – NPURE Skin Journal';
+  document.querySelector('meta[name="description"]').content = a.content.replace(/<[^>]+>/g,'').slice(0,160);
+
+  // Hero
+  document.getElementById('heroBg').style.background = a.heroBg;
+  document.getElementById('heroCat').textContent = a.cat;
+  document.getElementById('heroTitle').textContent = a.title;
+  document.getElementById('heroDate').innerHTML = `<time datetime="${a.datetime}">${a.date}</time>`;
+  document.getElementById('heroRead').textContent = a.readTime;
+  // Article body
+  const tags = a.tags.map(t => `<span class="article-tag">${t}</span>`).join('');
+  const cta = `
+    <div class="inline-product-cta">
+      <div class="cta-text"><p>${a.ctaTitle}</p><span>${a.ctaDesc}</span></div>
+      <a href="index.html#shop" class="btn-forest">${a.ctaBtn}</a>
+    </div>`;
+  document.getElementById('articleContent').innerHTML = a.content + cta + `<div class="article-tags-footer">${tags}</div>`;
+
+  // WhatsApp share
+  const shareURL = encodeURIComponent(window.location.href);
+  const shareText = encodeURIComponent('Baca artikel ini dari NPURE: ' + a.title);
+  document.getElementById('shareWA').href = `https://wa.me/?text=${shareText}%20${shareURL}`;
+
+  // Related
+  const related = relatedData.filter(r => r.id !== id).slice(0,3);
+  document.getElementById('relatedArticles').innerHTML = related.map(r => `
+    <a class="related-article" href="artikel-detail.html?id=${r.id}">
+      <div class="related-thumb" style="background:${r.bg}">${r.emoji}</div>
+      <div>
+        <div class="related-article-title">${r.title}</div>
+        <div class="related-article-date">${r.date}</div>
+      </div>
+    </a>`).join('');
+
+}
+
+// ─── Navbar scroll (sama seperti index) ───────────────────────
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── Reading progress ──────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100;
+  document.getElementById('readingProgress').style.width = Math.min(scrolled, 100) + '%';
+});
+
+// ─── Copy link ─────────────────────────────────────────────
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = document.getElementById('copyLink');
+    btn.textContent = '✓';
+    setTimeout(() => btn.textContent = '🔗', 2000);
+  });
+}
+
+// ─── Mobile nav ────────────────────────────────────────────
+document.querySelector('.nav-mobile-menu').addEventListener('click', function() {
+  const nl = document.querySelector('.nav-links');
+  if (nl.style.display === 'flex') {
+    nl.style.display = '';
+    nl.style.position = '';
+  } else {
+    nl.style.display = 'flex';
+    nl.style.flexDirection = 'column';
+    nl.style.position = 'fixed';
+    nl.style.top = '72px';
+    nl.style.left = '0';
+    nl.style.right = '0';
+    nl.style.background = 'rgba(27,67,50,0.97)';
+    nl.style.padding = '1.5rem 2rem';
+    nl.style.zIndex = '99';
+    nl.style.backdropFilter = 'blur(20px)';
+  }
+});
+
+// ─── Init ──────────────────────────────────────────────────
+loadArticle(getArticleId());
+</script>
+</body>
+</html>
