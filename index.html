@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      NPURE – Kulit Sehat Dimulai dari Centella Asiatica | Sunscreen & Toner
+      Aurecya | NPURE - Kulit Sehat Dimulai dari Centella Asiatica | Sunscreen &
+      Toner
     </title>
     <meta
       name="description"
@@ -166,20 +167,6 @@
       }
 
       /* NAV */
-      /* nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        padding: 1.25rem 2.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition:
-          background 0.4s var(--ease),
-          backdrop-filter 0.4s;
-      } */
       nav {
         position: fixed;
         top: 0;
@@ -1987,115 +1974,140 @@
         transition-delay: 0.4s;
       }
 
-      /* RESPONSIVE */
+      /* Sembunyikan elemen khusus mobile di desktop */
+      .nav-item-icon,
+      .nav-item-arrow {
+        display: none;
+      }
+      .nav-mobile-cta {
+        display: none;
+      }
+      .nav-close-btn {
+        display: none;
+      }
+      .nav-item-label {
+        display: inline;
+      }
+      /* Responsive */
       @media (max-width: 900px) {
         nav {
           grid-template-columns: 1fr auto;
           padding: 1rem 1.25rem;
         }
-
         .nav-links,
         .nav-cta {
           display: none;
         }
+        .nav-item-label {
+          display: inline;
+        }
 
+        /* ── HAMBURGER BUTTON ── */
         .nav-mobile-menu {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: none;
-          border: none;
-          color: white;
-          cursor: pointer;
-          z-index: 1001;
+          flex-direction: column;
+          gap: 4px;
           width: 36px;
           height: 36px;
-          flex-direction: column;
-          gap: 5px;
-          padding: 4px;
+          background: rgba(255, 255, 255, 0.08);
+          border: 0.5px solid rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+          cursor: pointer;
+          z-index: 2000;
+          padding: 0;
+          transition: background 0.3s;
         }
-
-        /* Hamburger bar → X */
         .nav-mobile-menu .bar {
           display: block;
-          width: 22px;
-          height: 2px;
-          background: rgba(255, 255, 255, 0.9);
+          width: 15px;
+          height: 1.5px;
+          background: rgba(255, 255, 255, 0.85);
           border-radius: 2px;
           transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
           pointer-events: none;
         }
         .nav-mobile-menu.open .bar:nth-child(1) {
-          transform: translateY(7px) rotate(45deg);
+          transform: translateY(5.5px) rotate(45deg);
         }
         .nav-mobile-menu.open .bar:nth-child(2) {
           opacity: 0;
           transform: scaleX(0);
         }
         .nav-mobile-menu.open .bar:nth-child(3) {
-          transform: translateY(-7px) rotate(-45deg);
+          transform: translateY(-5.5px) rotate(-45deg);
         }
 
-        /* Overlay menu */
+        /* ── OVERLAY FULLSCREEN ── */
         .nav-links.active {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
+          display: grid !important;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 64px repeat(3, 1fr) auto;
           list-style: none;
-
           position: fixed;
-          inset: 0;
-
-          background: rgba(18, 38, 18, 0.88);
-          backdrop-filter: blur(18px) saturate(1.6);
-          -webkit-backdrop-filter: blur(18px) saturate(1.6);
-
-          padding: 0 2rem 2rem;
-          z-index: 1000;
-
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 1500;
+          background: rgba(10, 26, 18, 0.98);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
           opacity: 0;
           pointer-events: none;
-          transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 0.3s ease;
+          padding: 0;
+          margin: 0;
+          overflow: hidden;
         }
         .nav-links.active.open {
           opacity: 1;
           pointer-events: all;
         }
 
-        /* Header dalam overlay: logo + tombol tutup */
+        /* ── HEADER SPACER span 2 kolom ── */
         .nav-links.active::before {
           content: "";
           display: block;
-          height: 72px;
-          flex-shrink: 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          margin-bottom: 1rem;
+          grid-column: 1 / -1;
+          height: 64px;
+          border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Link item */
+        /* ── SETIAP LI ── */
         .nav-links.active li {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+          display: flex;
+          align-items: stretch;
+          border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+          box-sizing: border-box;
         }
-        .nav-links.active li:last-child {
+        .nav-links.active li.nav-col-left {
+          border-right: 0.5px solid rgba(255, 255, 255, 0.07);
+        }
+        .nav-links.active li:nth-last-child(-n + 2) {
           border-bottom: none;
         }
 
+        /* ── LINK STYLING ── */
         .nav-links.active a {
-          display: block;
+          display: flex;
+          align-items: center;
+          padding: 0 1.25rem;
           color: rgba(255, 255, 255, 0.85);
-          font-size: 1.9rem;
-          font-weight: 400;
-          font-family: "Cormorant Garamond", serif;
-          padding: 0.65rem 0;
-          text-transform: none;
-          letter-spacing: 0;
           text-decoration: none;
-
-          transform: translateX(-20px);
+          font-size: 0.92rem;
+          font-weight: 400;
+          font-family: var(--body);
+          letter-spacing: 0;
+          text-transform: none;
+          width: 100%;
+          transform: translateX(-12px);
           opacity: 0;
           transition:
             color 0.2s,
-            padding-left 0.2s,
             transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
             opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -2103,33 +2115,131 @@
           transform: translateX(0);
           opacity: 1;
         }
-
-        /* Stagger delay per link */
         .nav-links.active.open li:nth-child(1) a {
-          transition-delay: 0.05s;
+          transition-delay: 0.04s;
         }
         .nav-links.active.open li:nth-child(2) a {
-          transition-delay: 0.1s;
+          transition-delay: 0.07s;
         }
         .nav-links.active.open li:nth-child(3) a {
-          transition-delay: 0.15s;
+          transition-delay: 0.1s;
         }
         .nav-links.active.open li:nth-child(4) a {
-          transition-delay: 0.2s;
+          transition-delay: 0.13s;
         }
         .nav-links.active.open li:nth-child(5) a {
-          transition-delay: 0.25s;
+          transition-delay: 0.16s;
         }
         .nav-links.active.open li:nth-child(6) a {
-          transition-delay: 0.3s;
+          transition-delay: 0.19s;
         }
-
         .nav-links.active a:hover {
-          color: #7ecba0;
-          padding-left: 8px;
+          color: var(--mint);
+          background: rgba(149, 213, 178, 0.05);
         }
 
-        /* asoy */
+        /* ── ICON & ARROW ── */
+        .nav-item-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 34px;
+          height: 34px;
+          border-radius: 9px;
+          background: rgba(149, 213, 178, 0.1);
+          border: 0.5px solid rgba(149, 213, 178, 0.2);
+          font-size: 0.95rem;
+          margin-right: 0.75rem;
+          flex-shrink: 0;
+        }
+        .nav-item-label {
+          display: inline;
+          flex: 1;
+        }
+        .nav-item-arrow {
+          display: inline;
+          color: rgba(255, 255, 255, 0.2);
+          font-size: 1rem;
+          margin-left: auto;
+          padding-right: 0.25rem;
+        }
+
+        /* ── CLOSE BUTTON ── */
+        .nav-close-btn.active {
+          display: flex;
+          position: fixed;
+          top: 14px;
+          right: 1.25rem;
+          z-index: 1600;
+          width: 36px;
+          height: 36px;
+          background: rgba(255, 255, 255, 0.08);
+          border: 0.5px solid rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 1rem;
+          cursor: pointer;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.2s;
+        }
+        .nav-close-btn:hover {
+          background: rgba(255, 255, 255, 0.14);
+        }
+
+        /* ── CTA BELI SEKARANG — row terakhir span 2 kolom ── */
+        .nav-col-cta {
+          grid-column: 1 / -1 !important;
+          border-bottom: none !important;
+          border-right: none !important;
+          padding: 1rem 1.5rem;
+          display: flex !important;
+          align-items: center;
+          border-top: 0.5px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .nav-mobile-cta {
+          display: flex !important;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding: 0.9rem 1.5rem;
+          background: linear-gradient(135deg, var(--mint) 0%, #52b788 100%);
+          color: var(--forest);
+          font-size: 0.88rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+          border-radius: 1rem;
+          box-shadow: 0 4px 20px rgba(149, 213, 178, 0.3);
+          opacity: 0;
+          transform: translateY(8px);
+          transition:
+            opacity 0.35s 0.22s,
+            transform 0.35s 0.22s,
+            box-shadow 0.3s;
+        }
+        .nav-links.active.open .nav-mobile-cta {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .nav-mobile-cta:hover {
+          box-shadow: 0 8px 32px rgba(149, 213, 178, 0.5);
+          transform: translateY(-2px) !important;
+        }
+        .cta-icon {
+          font-size: 1rem;
+          opacity: 0.7;
+        }
+        .cta-arrow {
+          font-size: 1.1rem;
+          transition: transform 0.3s;
+        }
+        .nav-mobile-cta:hover .cta-arrow {
+          transform: translateX(4px);
+        }
+
+        /* ── SECTION RESPONSIVE ── */
         .hero-content {
           grid-template-columns: 1fr;
           padding: 6rem 1.25rem 3rem;
@@ -2180,6 +2290,7 @@
           gap: 1.5rem;
         }
       }
+
       @media (max-width: 600px) {
         .hero h1 {
           font-size: 2.5rem;
@@ -2230,20 +2341,6 @@
     </style>
 
     <script>
-      /* ═══════════════════════════════════════════════════════
-   🎬 NPURE MEDIA CONFIG
-   Isi URL video/gambar di sini, lalu simpan file.
-   ═══════════════════════════════════════════════════════
-
-   FORMAT URL yang didukung:
-   • File lokal  : "assets/nama-file.jpg"
-   • URL absolut : "https://cdn.contoh.com/gambar.jpg"
-   • YouTube     : "https://www.youtube.com/watch?v=XXXXXXX"
-   • Vimeo       : "https://vimeo.com/XXXXXXX"
-
-   Kosongkan string ("") untuk tetap tampilkan placeholder.
-═══════════════════════════════════════════════════════ */
-
       const NPURE_MEDIA = {
         // ── VIDEO ──────────────────────────────────────────
         heroVideo: "assets/video-hero.mp4",
@@ -2255,25 +2352,25 @@
 
         // ── PRODUK SHOWCASE (besar, section produk) ────────
         productImgSunscreen: "assets/sunscreen-showcase.webp",
-        productImgToner: "assets/toner-showcase.webp", // PNG/JPG, 600×800px
+        productImgToner: "assets/toner-showcase.webp", 
 
         // ── KONTEN BRAND ───────────────────────────────────
-        brandImage: "assets/brand-image.png", // JPG/PNG portrait ladang centella, 800×1000px
+        brandImage: "assets/brand-image.png", 
 
         // ── BEFORE / AFTER ─────────────────────────────────
-        beforeImage: "assets/before-after-sunscreen.webp", // JPG, 400×300px – foto kulit hari 0
-        afterImage: "assets/before-after-toner.webp", // JPG, 400×300px – foto kulit hari 14
+        beforeImage: "assets/before-after-sunscreen.webp", 
+        afterImage: "assets/before-after-toner.webp", 
 
         // ── BUNDLE CTA ─────────────────────────────────────
-        bundleImgSunscreen: "assets/toner-hero.webp", // PNG, 80×120px – produk kecil
-        bundleImgSet: "", // PNG, 80×120px – bundle set
-        bundleImgToner: "assets/sunscreen-hero.webp", // PNG, 80×120px – produk kecil
+        bundleImgSunscreen: "assets/toner-hero.webp", 
+        bundleImgSet: "", 
+        bundleImgToner: "assets/sunscreen-hero.webp", 
 
         // ── THUMBNAIL ARTIKEL (16:9, 640×360px) ────────────
-        artikelThumb1: "assets/artikel-satu.webp", // Artikel 1: Centella Asiatica
-        artikelThumb2: "assets/artikel-dua.webp", // Artikel 2: Cara Pakai Sunscreen
-        artikelThumb3: "assets/artikel-tiga.webp", // Artikel 3: Rutinitas Kulit Berjerawat
-        artikelThumb4: "assets/artikel-empat.webp", // Artikel 4: SPF vs PA
+        artikelThumb1: "assets/artikel-satu.webp",
+        artikelThumb2: "assets/artikel-dua.webp",
+        artikelThumb3: "assets/artikel-tiga.webp", 
+        artikelThumb4: "assets/artikel-empat.webp",
 
         // ── HERO ARTIKEL (16:7, 1200×525px) ───────────────
         artikelHero1: "", // Hero artikel 1
@@ -2282,7 +2379,6 @@
         artikelHero4: "", // Hero artikel 4
       };
 
-      /* ─── JANGAN UBAH KODE DI BAWAH INI ─────────────── */
       (function applyNpureMedia() {
         /* Helper: parse YouTube / Vimeo ke embed URL */
         function toEmbedUrl(url, opts) {
@@ -2518,20 +2614,64 @@
       >Langsung ke konten utama</a
     >
     <nav id="mainNav" role="navigation" aria-label="Navigasi Utama">
-      <!-- <a href="#" class="nav-logo">N<span>PURE</span></a> -->
       <a href="#" class="nav-logo">
         <img src="assets/logo.png" alt="NPURE Logo" />
       </a>
       <ul class="nav-links">
-        <li><a href="#story">Cerita</a></li>
-        <li><a href="#science">Sains</a></li>
-        <li><a href="#products">Produk</a></li>
-        <li><a href="#compare">Bandingkan</a></li>
-        <li><a href="#artikel">Artikel</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li class="nav-col-left">
+          <a href="#story"
+            ><span class="nav-item-icon">📖</span
+            ><span class="nav-item-label">Cerita</span
+            ><span class="nav-item-arrow">›</span></a
+          >
+        </li>
+        <li class="nav-col-right">
+          <a href="#compare"
+            ><span class="nav-item-icon">⚖️</span
+            ><span class="nav-item-label">Bandingkan</span
+            ><span class="nav-item-arrow">›</span></a
+          >
+        </li>
+        <li class="nav-col-left">
+          <a href="#science"
+            ><span class="nav-item-icon">🔬</span
+            ><span class="nav-item-label">Sains</span
+            ><span class="nav-item-arrow">›</span></a
+          >
+        </li>
+        <li class="nav-col-right">
+          <a href="#artikel"
+            ><span class="nav-item-icon">📝</span
+            ><span class="nav-item-label">Artikel</span
+            ><span class="nav-item-arrow">›</span></a
+          >
+        </li>
+        <li class="nav-col-left">
+          <a href="#products"
+            ><span class="nav-item-icon">🌿</span
+            ><span class="nav-item-label">Produk</span
+            ><span class="nav-item-arrow">›</span></a
+          >
+        </li>
+        <li class="nav-col-right">
+          <a href="#faq"
+            ><span class="nav-item-icon">❓</span
+            ><span class="nav-item-label">FAQ</span
+            ><span class="nav-item-arrow">›</span></a
+          >
+        </li>
+        <li class="nav-col-cta">
+          <a href="#shop" class="nav-mobile-cta" id="navMobileCta">
+            <span class="cta-icon">✦</span>
+            <span>Beli Sekarang</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </li>
       </ul>
+      <button class="nav-close-btn" id="navCloseBtn" aria-label="Tutup menu">
+        ✕
+      </button>
       <a href="#shop" class="nav-cta">Beli Sekarang</a>
-      <!-- <button class="nav-mobile-menu" aria-label="Menu">☰</button> -->
       <button
         class="nav-mobile-menu"
         aria-label="Buka menu"
@@ -2917,7 +3057,12 @@
               >
                 35 ml · Rp 89.000 · Untuk Semua Jenis Kulit
               </p>
-              <a href="https://s.shopee.co.id/8phhOXkQ7Z" target="_blank" class="btn-forest">Beli Sunscreen</a>
+              <a
+                href="https://s.shopee.co.id/8phhOXkQ7Z"
+                target="_blank"
+                class="btn-forest"
+                >Beli Sunscreen</a
+              >
             </div>
           </div>
         </div>
@@ -2985,7 +3130,12 @@
               >
                 150 ml · Rp 79.000 · Untuk Semua Jenis Kulit
               </p>
-              <a href="https://s.shopee.co.id/9AKXn9j9Rf" target="_blank" class="btn-forest">Beli Toner</a>
+              <a
+                href="https://s.shopee.co.id/9AKXn9j9Rf"
+                target="_blank"
+                class="btn-forest"
+                >Beli Toner</a
+              >
             </div>
           </div>
         </div>
@@ -3344,8 +3494,8 @@
               </div>
               <div class="article-body">
                 <div class="article-meta">
-                  <time class="article-date" datetime="2024-11-15"
-                    >15 November 2024</time
+                  <time class="article-date" datetime="2025-05-15"
+                    >15 Mei 2025</time
                   >
                   <span class="article-meta-sep">·</span>
                   <span class="article-read">5 menit baca</span>
@@ -3380,8 +3530,8 @@
               </div>
               <div class="article-body">
                 <div class="article-meta">
-                  <time class="article-date" datetime="2024-11-08"
-                    >8 November 2024</time
+                  <time class="article-date" datetime="2025-05-08"
+                    >8 Mei 2025</time
                   >
                   <span class="article-meta-sep">·</span>
                   <span class="article-read">4 menit baca</span>
@@ -3415,8 +3565,8 @@
               </div>
               <div class="article-body">
                 <div class="article-meta">
-                  <time class="article-date" datetime="2024-10-28"
-                    >28 Oktober 2024</time
+                  <time class="article-date" datetime="2025-10-28"
+                    >28 Mei 2025</time
                   >
                   <span class="article-meta-sep">·</span>
                   <span class="article-read">6 menit baca</span>
@@ -3451,8 +3601,8 @@
               </div>
               <div class="article-body">
                 <div class="article-meta">
-                  <time class="article-date" datetime="2024-10-15"
-                    >15 Oktober 2024</time
+                  <time class="article-date" datetime="2025-10-15"
+                    >15 Mei 2025</time
                   >
                   <span class="article-meta-sep">·</span>
                   <span class="article-read">5 menit baca</span>
@@ -3503,8 +3653,8 @@
                 Mengenal Centella Asiatica: Rahasia Kulit Sehat dari Pegagan
               </h1>
               <div class="article-detail-meta">
-                <span><strong>Penulis:</strong> Tim NPURE</span>
-                <span><time datetime="2024-11-15">15 November 2024</time></span>
+                <span><strong>Penulis:</strong> Tim Aurecya</span>
+                <span><time datetime="2025-05-15">15 Mei 2025</time></span>
                 <span>5 menit baca</span>
               </div>
               <div class="article-content">
@@ -3636,8 +3786,8 @@
                 Cara Pakai Sunscreen yang Benar Supaya Perlindungan Maksimal
               </h1>
               <div class="article-detail-meta">
-                <span><strong>Penulis:</strong> Tim NPURE</span>
-                <span><time datetime="2024-11-08">8 November 2024</time></span>
+                <span><strong>Penulis:</strong> Tim Aurecya</span>
+                <span><time datetime="2025-05-08">8 Mei 2025</time></span>
                 <span>4 menit baca</span>
               </div>
               <div class="article-content">
@@ -3745,8 +3895,8 @@
                 Tepat
               </h1>
               <div class="article-detail-meta">
-                <span><strong>Penulis:</strong> Tim NPURE</span>
-                <span><time datetime="2024-10-28">28 Oktober 2024</time></span>
+                <span><strong>Penulis:</strong> Tim Aurecya</span>
+                <span><time datetime="2025-10-28">28 Mei 2025</time></span>
                 <span>6 menit baca</span>
               </div>
               <div class="article-content">
@@ -3881,8 +4031,8 @@
                 SPF vs PA: Apa Bedanya dan Mengapa Keduanya Penting?
               </h1>
               <div class="article-detail-meta">
-                <span><strong>Penulis:</strong> Tim NPURE</span>
-                <span><time datetime="2024-10-15">15 Oktober 2024</time></span>
+                <span><strong>Penulis:</strong> Tim Aurecya</span>
+                <span><time datetime="2025-10-15">15 Mei 2025</time></span>
                 <span>5 menit baca</span>
               </div>
               <div class="article-content">
@@ -3979,8 +4129,7 @@
             <h2>Mulai Perjalanan<br /><em>Kulit Sehat</em><br />Kamu</h2>
             <p>
               Bergabunglah dengan ribuan orang yang telah mentransformasi kulit
-              mereka dengan kekuatan Centella Asiatica. Gratis ongkir untuk
-              pembelian di atas Rp 200.000.
+              mereka dengan kekuatan Centella Asiatica.
             </p>
           </div>
 
@@ -3993,7 +4142,11 @@
               </div>
               <div class="bundle-name">NPURE Cica Hydrating Acne Toner</div>
               <div class="bundle-price">IDR 104K</div>
-              <a href="https://s.shopee.co.id/9AKXn9j9Rf" target="_blank" class="btn-bundle-buy">
+              <a
+                href="https://s.shopee.co.id/9AKXn9j9Rf"
+                target="_blank"
+                class="btn-bundle-buy"
+              >
                 <span>Beli Toner</span>
                 <span class="btn-arrow">→</span>
               </a>
@@ -4006,7 +4159,11 @@
               </div>
               <div class="bundle-name">NPURE Sunscreen Cica (Centella)</div>
               <div class="bundle-price">IDR 79K</div>
-              <a href="https://s.shopee.co.id/8phhOXkQ7Z" target="_blank" class="btn-bundle-buy">
+              <a
+                href="https://s.shopee.co.id/8phhOXkQ7Z"
+                target="_blank"
+                class="btn-bundle-buy"
+              >
                 <span>Beli Sunscreen</span>
                 <span class="btn-arrow">→</span>
               </a>
@@ -4058,7 +4215,7 @@
       </div>
       <div class="footer-bottom">
         <p>
-          © 2024 NPURE. All rights reserved. Bersertifikasi Halal Indonesia.
+          © 2026 Aurecya. All rights reserved.
         </p>
         <div class="halal-badge">
           <div class="halal-icon">HI</div>
@@ -4132,6 +4289,47 @@
         }
       }
 
+      // Nav Links
+      const menuBtn = document.querySelector(".nav-mobile-menu");
+      const navLinks = document.querySelector(".nav-links");
+      const closeBtn = document.getElementById("navCloseBtn");
+
+      function openMenu() {
+        navLinks.classList.add("active");
+        closeBtn && closeBtn.classList.add("active");
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            navLinks.classList.add("open");
+            menuBtn.classList.add("open");
+          }),
+        );
+        menuBtn.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        navLinks.classList.remove("open");
+        menuBtn.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        setTimeout(() => {
+          navLinks.classList.remove("active");
+          closeBtn && closeBtn.classList.remove("active");
+        }, 350);
+      }
+
+      menuBtn.addEventListener("click", () =>
+        navLinks.classList.contains("open") ? closeMenu() : openMenu(),
+      );
+      closeBtn && closeBtn.addEventListener("click", closeMenu);
+      navLinks
+        .querySelectorAll("a")
+        .forEach((a) => a.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && navLinks.classList.contains("open"))
+          closeMenu();
+      });
+
       // Review card stagger
       document
         .querySelectorAll(".reviews-grid .review-card")
@@ -4152,32 +4350,32 @@
           {
             "@type": "BlogPosting",
             "headline": "Mengenal Centella Asiatica: Rahasia Kulit Sehat dari Pegagan",
-            "datePublished": "2024-11-15",
-            "author": { "@type": "Organization", "name": "Tim NPURE" },
+            "datePublished": "2025-05-15",
+            "author": { "@type": "Organization", "name": "Tim Aurecya" },
             "publisher": { "@type": "Organization", "name": "NPURE" },
             "keywords": "centella asiatica, pegagan, skincare alami, bahan aktif kulit"
           },
           {
             "@type": "BlogPosting",
             "headline": "Cara Pakai Sunscreen yang Benar Supaya Perlindungan Maksimal",
-            "datePublished": "2024-11-08",
-            "author": { "@type": "Organization", "name": "Tim NPURE" },
+            "datePublished": "2025-05-08",
+            "author": { "@type": "Organization", "name": "Tim Aurecya" },
             "publisher": { "@type": "Organization", "name": "NPURE" },
             "keywords": "cara pakai sunscreen, sunscreen benar, SPF 50, reapply sunscreen"
           },
           {
             "@type": "BlogPosting",
             "headline": "Rutinitas Skincare Pagi & Malam untuk Kulit Berjerawat yang Tepat",
-            "datePublished": "2024-10-28",
-            "author": { "@type": "Organization", "name": "Tim NPURE" },
+            "datePublished": "2025-10-28",
+            "author": { "@type": "Organization", "name": "Tim Aurecya" },
             "publisher": { "@type": "Organization", "name": "NPURE" },
             "keywords": "rutinitas skincare jerawat, skincare pagi malam, cara atasi jerawat"
           },
           {
             "@type": "BlogPosting",
             "headline": "SPF vs PA: Apa Bedanya dan Mengapa Keduanya Penting?",
-            "datePublished": "2024-10-15",
-            "author": { "@type": "Organization", "name": "Tim NPURE" },
+            "datePublished": "2025-10-15",
+            "author": { "@type": "Organization", "name": "Tim Aurecya" },
             "publisher": { "@type": "Organization", "name": "NPURE" },
             "keywords": "SPF, PA++++, UVA, UVB, sunscreen"
           }
@@ -4257,56 +4455,6 @@
           }
         ]
       }
-    </script>
-
-    <script>
-      const menuBtn = document.querySelector(".nav-mobile-menu");
-      const navLinks = document.querySelector(".nav-links");
-
-      menuBtn.addEventListener("click", () => {
-        const isOpen = navLinks.classList.contains("open");
-
-        if (!isOpen) {
-          // Buka: tampilkan dulu (active), lalu trigger animasi (open) 1 frame berikutnya
-          navLinks.classList.add("active");
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              navLinks.classList.add("open");
-              menuBtn.classList.add("open");
-            });
-          });
-          menuBtn.setAttribute("aria-expanded", "true");
-          menuBtn.setAttribute("aria-label", "Tutup menu");
-          document.body.style.overflow = "hidden";
-        } else {
-          // Tutup: hapus open (animasi mundur), tunggu selesai baru hapus active
-          navLinks.classList.remove("open");
-          menuBtn.classList.remove("open");
-          menuBtn.setAttribute("aria-expanded", "false");
-          menuBtn.setAttribute("aria-label", "Buka menu");
-          document.body.style.overflow = "";
-          setTimeout(() => navLinks.classList.remove("active"), 350);
-        }
-      });
-
-      // Tutup saat klik link di dalam menu
-      navLinks.querySelectorAll("a").forEach((a) => {
-        a.addEventListener("click", () => {
-          navLinks.classList.remove("open");
-          menuBtn.classList.remove("open");
-          menuBtn.setAttribute("aria-expanded", "false");
-          menuBtn.setAttribute("aria-label", "Buka menu");
-          document.body.style.overflow = "";
-          setTimeout(() => navLinks.classList.remove("active"), 350);
-        });
-      });
-
-      // Tutup dengan tombol Escape
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && navLinks.classList.contains("open")) {
-          menuBtn.click();
-        }
-      });
     </script>
   </body>
 </html>
