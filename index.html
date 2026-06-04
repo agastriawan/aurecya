@@ -127,7 +127,7 @@
       }
     </script>
 
-    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="icon" type="image/webp" href="assets/favicon.webp" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
@@ -2352,6 +2352,18 @@
           align-items: flex-start;
         }
       }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.8);
+        }
+      }
     </style>
 
     <script>
@@ -4273,46 +4285,61 @@
           </ul>
         </div>
       </div>
-     <div class="footer-bottom">
-  <p>© 2026 Aurecya. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>© 2026 Aurecya. All rights reserved.</p>
 
-  <!-- View Counter -->
-  <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-    <span style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);">
-      <span style="display:inline-block;width:6px;height:6px;background:#52b788;border-radius:50%;margin-right:4px;vertical-align:middle;animation:pulse 2s infinite;"></span>
-      Pengunjung:
-    </span>
-    <span style="font-size:0.78rem;color:rgba(255,255,255,0.4);">
-      Hari ini <strong id="vc-today" style="color:#95d5b2;">—</strong>
-    </span>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <span style="font-size:0.78rem;color:rgba(255,255,255,0.4);">
-      Bulan ini <strong id="vc-month" style="color:#95d5b2;">—</strong>
-    </span>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <span style="font-size:0.78rem;color:rgba(255,255,255,0.4);">
-      Tahun ini <strong id="vc-year" style="color:#95d5b2;">—</strong>
-    </span>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <span style="font-size:0.78rem;color:rgba(255,255,255,0.4);">
-      Total <strong id="vc-total" style="color:#95d5b2;">—</strong>
-    </span>
-  </div>
+        <!-- View Counter -->
+        <div
+          style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap"
+        >
+          <span
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+              color: rgba(255, 255, 255, 0.3);
+            "
+          >
+            <span
+              style="
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                background: #52b788;
+                border-radius: 50%;
+                margin-right: 4px;
+                vertical-align: middle;
+                animation: pulse 2s infinite;
+              "
+            ></span>
+            Pengunjung:
+          </span>
+          <span style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.4)">
+            Hari ini <strong id="vc-today" style="color: #95d5b2">—</strong>
+          </span>
+          <span style="color: rgba(255, 255, 255, 0.15)">·</span>
+          <span style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.4)">
+            Bulan ini <strong id="vc-month" style="color: #95d5b2">—</strong>
+          </span>
+          <span style="color: rgba(255, 255, 255, 0.15)">·</span>
+          <span style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.4)">
+            Tahun ini <strong id="vc-year" style="color: #95d5b2">—</strong>
+          </span>
+          <span style="color: rgba(255, 255, 255, 0.15)">·</span>
+          <span style="font-size: 0.78rem; color: rgba(255, 255, 255, 0.4)">
+            Total <strong id="vc-total" style="color: #95d5b2">—</strong>
+          </span>
+        </div>
 
-  <div class="halal-badge">
-    <div class="halal-icon">HI</div>
-    <span>Bersertifikasi Halal Indonesia</span>
-  </div>
-</div>
-
-<!-- Tambahkan animasi pulse di CSS yang sudah ada -->
-<style>
-  @keyframes pulse {
-    0%,100%{opacity:1;transform:scale(1)}
-    50%{opacity:.4;transform:scale(.8)}
-  }
-</style>
+        <div class="halal-badge">
+          <div class="halal-icon">HI</div>
+          <span>Bersertifikasi Halal Indonesia</span>
+        </div>
+      </div>
     </footer>
+
+    <!-- Supabase View Counter -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
       // NAV scroll
@@ -4419,6 +4446,34 @@
         if (e.key === "Escape" && navLinks.classList.contains("open"))
           closeMenu();
       });
+
+      // Supabase View Counter
+      const SUPABASE_URL = "https://vfipmavzzeniossxrvev.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmaXBtYXZ6emVuaW9zc3hydmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1MzA1NDIsImV4cCI6MjA5NjEwNjU0Mn0.9n4mVi4FRd-JmBck5rpt16u7haeudSTXVCmAEWGRcPU";
+
+      const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      async function recordAndFetchViews() {
+        if (!sessionStorage.getItem("view_recorded")) {
+          await _supabase.from("page_views").insert({ page: "/" });
+          sessionStorage.setItem("view_recorded", "true");
+        }
+
+        const { data } = await _supabase
+          .from("view_counts")
+          .select("*")
+          .single();
+        if (!data) return;
+
+        const fmt = (n) => Number(n).toLocaleString("id-ID");
+        document.getElementById("vc-today").textContent = fmt(data.today);
+        document.getElementById("vc-month").textContent = fmt(data.this_month);
+        document.getElementById("vc-year").textContent = fmt(data.this_year);
+        document.getElementById("vc-total").textContent = fmt(data.total);
+      }
+
+      document.addEventListener("DOMContentLoaded", recordAndFetchViews);
 
       // Review card stagger
       document
@@ -4546,31 +4601,5 @@
         ]
       }
     </script>
-
-    <!-- Supabase View Counter -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const SUPABASE_URL = 'https://vfipmavzzeniossxrvev.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmaXBtYXZ6emVuaW9zc3hydmV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1MzA1NDIsImV4cCI6MjA5NjEwNjU0Mn0.9n4mVi4FRd-JmBck5rpt16u7haeudSTXVCmAEWGRcPU';
-
-  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  async function recordAndFetchViews() {
-    // Catat 1 view
-    await _supabase.from('page_views').insert({ page: '/' });
-
-    // Ambil semua counts
-    const { data } = await _supabase.from('view_counts').select('*').single();
-    if (!data) return;
-
-    const fmt = n => Number(n).toLocaleString('id-ID');
-    document.getElementById('vc-today').textContent  = fmt(data.today);
-    document.getElementById('vc-month').textContent  = fmt(data.this_month);
-    document.getElementById('vc-year').textContent   = fmt(data.this_year);
-    document.getElementById('vc-total').textContent  = fmt(data.total);
-  }
-
-  document.addEventListener('DOMContentLoaded', recordAndFetchViews);
-</script>
   </body>
 </html>
