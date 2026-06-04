@@ -146,8 +146,18 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     /></noscript>
 
-    <link rel="preload" as="image" href="assets/sunscreen-hero.webp" fetchpriority="high">
-<link rel="preload" as="image" href="assets/toner-hero.webp" fetchpriority="high">
+    <link
+      rel="preload"
+      as="image"
+      href="assets/sunscreen-hero.webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/toner-hero.webp"
+      fetchpriority="high"
+    />
 
     <style>
       *,
@@ -4486,9 +4496,7 @@
         document.getElementById("vc-total").textContent = fmt(data.total);
       }
 
-      window.addEventListener("load", () => {
-        setTimeout(recordAndFetchViews, 100); // completely off critical path
-      });
+      document.addEventListener("DOMContentLoaded", recordAndFetchViews);
 
       // Review card stagger
       document
