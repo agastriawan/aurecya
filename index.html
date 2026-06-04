@@ -146,6 +146,9 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     /></noscript>
 
+    <link rel="preload" as="image" href="assets/sunscreen-hero.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/toner-hero.webp" fetchpriority="high">
+
     <style>
       *,
       *::before,
@@ -2605,6 +2608,10 @@
           img.alt = alt || "";
           img.loading = opts && opts.eager ? "eager" : "lazy";
           img.decoding = "async";
+          // Tambahkan ini untuk mencegah layout shift:
+          img.style.width = "100%";
+          img.style.height = "100%";
+          img.style.objectFit = "cover"; // atau "contain" sesuai konteks
           if (opts && opts.priority) img.setAttribute("fetchpriority", "high");
           wrap.appendChild(img);
         }
@@ -3604,7 +3611,7 @@
             <article
               class="article-card reveal reveal-delay-1"
               role="listitem"
-              onclick="location.href='/artikel/centella-asiatica/'"
+              onclick="location.href = '/artikel/centella-asiatica/'"
               aria-label="Baca artikel: Mengenal Centella Asiatica"
             >
               <div class="article-thumb-wrap dark" id="artikelThumb1">
@@ -3638,7 +3645,7 @@
             <article
               class="article-card reveal reveal-delay-2"
               role="listitem"
-              onclick="location.href='/artikel/cara-pakai-sunscreen/'"
+              onclick="location.href = '/artikel/cara-pakai-sunscreen/'"
               aria-label="Baca artikel: Cara Pakai Sunscreen yang Benar"
             >
               <div class="article-thumb-wrap mid" id="artikelThumb2">
@@ -3671,7 +3678,7 @@
             <article
               class="article-card reveal reveal-delay-3"
               role="listitem"
-              onclick="location.href='/artikel/rutinitas-kulit-berjerawat/'"
+              onclick="location.href = '/artikel/rutinitas-kulit-berjerawat/'"
               aria-label="Baca artikel: Rutinitas Skincare untuk Kulit Berjerawat"
             >
               <div class="article-thumb-wrap light" id="artikelThumb3">
@@ -3705,7 +3712,7 @@
             <article
               class="article-card reveal reveal-delay-4"
               role="listitem"
-              onclick="location.href='/artikel/spf-vs-pa/'"
+              onclick="location.href = '/artikel/spf-vs-pa/'"
               aria-label="Baca artikel: Mengenal SPF dan PA"
             >
               <div class="article-thumb-wrap green" id="artikelThumb4">
@@ -4375,7 +4382,10 @@
     </footer>
 
     <!-- Supabase View Counter -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+      defer
+    ></script>
 
     <script>
       // NAV scroll
@@ -4408,8 +4418,6 @@
           .forEach((i) => i.classList.remove("open"));
         if (!isOpen) item.classList.add("open");
       }
-
-      
 
       // Nav Links
       const menuBtn = document.querySelector(".nav-mobile-menu");
@@ -4478,7 +4486,9 @@
         document.getElementById("vc-total").textContent = fmt(data.total);
       }
 
-      document.addEventListener("DOMContentLoaded", recordAndFetchViews);
+      window.addEventListener("load", () => {
+        setTimeout(recordAndFetchViews, 100); // completely off critical path
+      });
 
       // Review card stagger
       document
